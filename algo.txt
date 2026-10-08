@@ -1,0 +1,369 @@
+=========================================================================================================
+TCP
+=========================================================================================================
+ALGORITHM (CLIENT PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming.
+STEP 3: Create a TCP socket using socket().
+STEP 4: Define the server address structure.
+Set address family as AF_INET.
+Set port number as 9002.
+Set IP address as 127.0.0.1.
+STEP 5: Establish connection with the server using connect().
+STEP 6: Read the order n of the square matrix from the user.
+STEP 7: Generate the n × n matrix and display it.STEP 8: Send the order n to the server using send().
+STEP 9: Send the matrix elements to the server using send().
+STEP 10: Receive the matrix type from the server using recv().
+STEP 11: Display the received matrix type.
+STEP 12: Close the socket connection using close().
+STEP 13: Stop.
+ALGORITHM (SERVER PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming.
+STEP 3: Create a TCP socket using socket().
+STEP 4: Define the server address structure.
+Set address family as AF_INET.
+Set port number as 9002.
+Set IP address as INADDR_ANY.
+STEP 5: Bind the socket to the specified port using bind().
+STEP 6: Put the socket into listening mode using listen().
+STEP 7: Accept the client connection using accept().
+STEP 8: Receive the order n from the client using recv().
+STEP 9: Receive the matrix elements from the client using recv().
+STEP 10: Initialize three flags:
+upper = 1
+lower = 1
+diagonal = 1
+STEP 11: Check whether all elements below the principal diagonal are zero.
+If any non-zero element is found below the diagonal, set upper = 0.
+STEP 12: Check whether all elements above the principal diagonal are zero.●​
+If any non-zero element is found above the diagonal, set lower = 0.
+STEP 13: Check whether all non-diagonal elements are zero.
+If any non-zero element is found outside the principal diagonal, set
+diagonal = 0.
+STEP 14: Determine the matrix type:
+If diagonal = 1, the matrix is a Diagonal Matrix.
+Else if upper = 1, the matrix is an Upper Triangular Matrix.
+Else if lower = 1, the matrix is a Lower Triangular Matrix.
+Otherwise, the matrix is a Normal Matrix.
+STEP 15: Send the matrix type to the client using send().
+STEP 16: Close the client socket and server socket using close().
+STEP 17: Stop.
+=========================================================================================================
+Yes. You want the same algorithm format, but only the application-specific changed steps for each UDP program. The socket structure remains based on your original UDP program.   exp4s
+1. SIMPLE CALCULATOR
+CLIENT PROGRAM — Changed Portion
+STEP 6: Read the first number, operator, and second number from the user.
+STEP 7: Send the first number, operator, and second number to the server using sendto().
+STEP 8: Receive the calculated result from the server using recvfrom().
+STEP 9: Display the received result.
+SERVER PROGRAM — Changed Portion
+STEP 8: Receive the first number, operator, and second number from the client using recvfrom().
+STEP 9: Perform the operation based on the received operator (+, -, *, /).
+STEP 10: Store the calculated result.
+STEP 11: Send the result to the client using sendto().
+2. VOWELS AND CONSONANTS
+CLIENT PROGRAM — Changed Portion
+STEP 6: Read a string from the user.
+STEP 7: Send the string to the server using sendto().
+STEP 8: Receive the number of vowels and consonants from the server using recvfrom().
+STEP 9: Display the number of vowels and consonants.
+SERVER PROGRAM — Changed Portion
+STEP 8: Receive the string from the client using recvfrom().
+STEP 9: Initialize vowels = 0 and consonants = 0.
+STEP 10: Traverse each character of the string.
+STEP 11: If the character is a vowel (a, e, i, o, u), increment vowels.
+STEP 12: If the character is an alphabet but not a vowel, increment consonants.
+STEP 13: Send the vowel and consonant counts to the client using sendto().
+3. FIBONACCI
+CLIENT PROGRAM — Changed Portion
+STEP 6: Read the number of terms n from the user.
+STEP 7: Send n to the server using sendto().
+STEP 8: Receive the Fibonacci series from the server using recvfrom().
+STEP 9: Display the Fibonacci series.
+SERVER PROGRAM — Changed Portion
+STEP 8: Receive the number of terms n from the client using recvfrom().
+STEP 9: Initialize a = 0 and b = 1.
+STEP 10: Generate the Fibonacci series for n terms.
+STEP 11: Store the generated terms in an array.
+STEP 12: Send the Fibonacci series to the client using sendto().
+4. FACTORIAL
+CLIENT PROGRAM — Changed Portion
+STEP 6: Read the number n from the user.
+STEP 7: Send n to the server using sendto().
+STEP 8: Receive the factorial result from the server using recvfrom().
+STEP 9: Display the factorial result.
+SERVER PROGRAM — Changed Portion
+STEP 8: Receive the number n from the client using recvfrom().
+STEP 9: Initialize result = 1.
+STEP 10: Calculate the factorial using:
+result = result × i for i = 1 to n.
+STEP 11: Send the factorial result to the client using sendto().
+5. PALINDROME STRING
+CLIENT PROGRAM — Changed Portion
+STEP 6: Read a string from the user.
+STEP 7: Send the string to the server using sendto().
+STEP 8: Receive the palindrome result from the server using recvfrom().
+STEP 9: Display whether the string is a palindrome or not.
+SERVER PROGRAM — Changed Portion
+STEP 8: Receive the string from the client using recvfrom().
+STEP 9: Initialize two indices, left = 0 and right = length - 1.
+STEP 10: Compare characters from both ends of the string.
+STEP 11: If any pair of characters is different, mark the string as not a palindrome.
+STEP 12: If all corresponding characters are equal, mark the string as a palindrome.
+STEP 13: Send the palindrome result to the client using sendto().
+6. REVERSE A STRING
+CLIENT PROGRAM — Changed Portion
+STEP 6: Read a string from the user.
+STEP 7: Send the string to the server using sendto().
+STEP 8: Receive the reversed string from the server using recvfrom().
+STEP 9: Display the reversed string.
+SERVER PROGRAM — Changed Portion
+STEP 8: Receive the string from the client using recvfrom().
+STEP 9: Find the length of the string.
+STEP 10: Traverse the string from the last character to the first character.
+STEP 11: Store the characters in reverse order in another string.
+STEP 12: Add the null character '\0' at the end of the reversed string.
+STEP 13: Send the reversed string to the client using sendto()
+
+
+
+=========================================================================================================
+UDP
+=========================================================================================================
+ALGORITHM
+ALGORITHM (SERVER PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming and string
+manipulation.STEP 3: Define a function replace() to replace abbreviations with their expanded
+forms in a string.
+STEP 4: Create a UDP socket using socket(AF_INET, SOCK_DGRAM, 0).
+STEP 5: Define the server address structure.
+• Set address family as AF_INET.​
+• Set port number as 9002.​
+• Set IP address as INADDR_ANY.
+STEP 6: Bind the socket to the specified port using bind().
+STEP 7: Wait for a message from the client using recvfrom().
+STEP 8: Store the received message in a buffer.
+STEP 9: Replace all predefined abbreviations with their corresponding expanded
+forms.
+• tbh → to be honest​
+• ig → I guess
+• idc → I don't care​
+• tbf → to be fair​
+• atm → at the moment​
+• irl → in real life​
+• lol → laughing out loud​
+• asap → as soon as possible​
+• omg → oh my God​
+• ttyl → talk to you later​
+• idk → I don't know​
+• nvm → never mind
+STEP 10: Send the modified message back to the client using sendto().
+STEP 11: Close the socket using close().
+STEP 12: Stop the program.
+ALGORITHM (CLIENT PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming.
+STEP 3: Create a UDP socket using socket(AF_INET, SOCK_DGRAM, 0).
+STEP 4: Define the server address structure.
+• Set address family as AF_INET.​
+• Set port number as 9002.​
+• Set server IP address as 127.0.0.1.STEP 5: Read a sentence containing abbreviations from the user using fgets().
+STEP 6: Send the sentence to the server using sendto().
+STEP 7: Receive the expanded sentence from the server using recvfrom().
+STEP 8: Display the expanded sentence on the screen.
+STEP 9: Close the socket using close().
+STEP 10: Stop the program.
+=========================================================================================================
+1. SIMPLE CALCULATOR
+ALGORITHM (SERVER PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming.
+STEP 3: Create a UDP socket using socket(AF_INET, SOCK_DGRAM, 0).
+STEP 4: Define the server address structure.
+• Set address family as AF_INET.
+• Set port number as 9002.
+• Set IP address as INADDR_ANY.  
+STEP 5: Bind the socket to the specified port using bind().
+STEP 6: Wait for data from the client using recvfrom().
+STEP 7: Receive the first number, operator, and second number from the client.
+STEP 8: Perform the arithmetic operation based on the received operator.
+• + → Addition
+• - → Subtraction
+• * → Multiplication
+• / → Division  
+STEP 9: Send the calculated result to the client using sendto().
+STEP 10: Close the socket using close().
+STEP 11: Stop the program.
+ALGORITHM (CLIENT PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming.
+STEP 3: Create a UDP socket using socket(AF_INET, SOCK_DGRAM, 0).
+STEP 4: Define the server address structure.
+• Set address family as AF_INET.
+• Set port number as 9002.
+• Set server IP address as 127.0.0.1.  
+STEP 5: Read the first number, operator, and second number from the user.
+STEP 6: Send the numbers and operator to the server using sendto().
+STEP 7: Receive the calculated result from the server using recvfrom().
+STEP 8: Display the result on the screen.
+STEP 9: Close the socket using close().
+STEP 10: Stop the program.
+2. VOWELS AND CONSONANTS
+ALGORITHM (SERVER PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming and character manipulation.
+STEP 3: Create a UDP socket using socket(AF_INET, SOCK_DGRAM, 0).
+STEP 4: Define the server address structure.
+• Set address family as AF_INET.
+• Set port number as 9002.
+• Set IP address as INADDR_ANY.  
+STEP 5: Bind the socket using bind().
+STEP 6: Wait for a string from the client using recvfrom().
+STEP 7: Initialize vowels = 0 and consonants = 0.
+STEP 8: Traverse each character of the received string.
+STEP 9: If the character is a vowel, increment vowels.
+STEP 10: If the character is an alphabet but not a vowel, increment consonants.
+STEP 11: Send the vowel and consonant counts to the client using sendto().
+STEP 12: Close the socket using close().
+STEP 13: Stop the program.
+ALGORITHM (CLIENT PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming.
+STEP 3: Create a UDP socket using socket(AF_INET, SOCK_DGRAM, 0).
+STEP 4: Define the server address structure.
+• Set address family as AF_INET.
+• Set port number as 9002.
+• Set server IP address as 127.0.0.1.  
+STEP 5: Read a string from the user using fgets().
+STEP 6: Send the string to the server using sendto().
+STEP 7: Receive the vowel and consonant counts using recvfrom().
+STEP 8: Display the number of vowels and consonants.
+STEP 9: Close the socket using close().
+STEP 10: Stop the program.
+3. FIBONACCI
+ALGORITHM (SERVER PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming.
+STEP 3: Create a UDP socket using socket(AF_INET, SOCK_DGRAM, 0).
+STEP 4: Define the server address structure.
+• Set address family as AF_INET.
+• Set port number as 9002.
+• Set IP address as INADDR_ANY.  
+STEP 5: Bind the socket using bind().
+STEP 6: Receive the number of terms n using recvfrom().
+STEP 7: Initialize a = 0 and b = 1.
+STEP 8: Generate the Fibonacci series for n terms.
+STEP 9: Store the generated terms in an array.
+STEP 10: Send the Fibonacci series to the client using sendto().
+STEP 11: Close the socket using close().
+STEP 12: Stop the program.
+ALGORITHM (CLIENT PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming.
+STEP 3: Create a UDP socket using socket(AF_INET, SOCK_DGRAM, 0).
+STEP 4: Define the server address structure.
+• Set address family as AF_INET.
+• Set port number as 9002.
+• Set server IP address as 127.0.0.1.  
+STEP 5: Read the number of terms n from the user.
+STEP 6: Send n to the server using sendto().
+STEP 7: Receive the Fibonacci series using recvfrom().
+STEP 8: Display the Fibonacci series.
+STEP 9: Close the socket using close().
+STEP 10: Stop the program.
+4. FACTORIAL
+ALGORITHM (SERVER PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming.
+STEP 3: Create a UDP socket using socket(AF_INET, SOCK_DGRAM, 0).
+STEP 4: Define the server address structure.
+• Set address family as AF_INET.
+• Set port number as 9002.
+• Set IP address as INADDR_ANY.  
+STEP 5: Bind the socket using bind().
+STEP 6: Receive the number n using recvfrom().
+STEP 7: Initialize result = 1.
+STEP 8: Calculate the factorial of n by multiplying the numbers from 1 to n.
+STEP 9: Send the factorial result to the client using sendto().
+STEP 10: Close the socket using close().
+STEP 11: Stop the program.
+ALGORITHM (CLIENT PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming.
+STEP 3: Create a UDP socket using socket(AF_INET, SOCK_DGRAM, 0).
+STEP 4: Define the server address structure.
+• Set address family as AF_INET.
+• Set port number as 9002.
+• Set server IP address as 127.0.0.1.  
+STEP 5: Read the number n from the user.
+STEP 6: Send n to the server using sendto().
+STEP 7: Receive the factorial result using recvfrom().
+STEP 8: Display the factorial result.
+STEP 9: Close the socket using close().
+STEP 10: Stop the program.
+5. PALINDROME STRING
+ALGORITHM (SERVER PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming and string manipulation.
+STEP 3: Create a UDP socket using socket(AF_INET, SOCK_DGRAM, 0).
+STEP 4: Define the server address structure.
+• Set address family as AF_INET.
+• Set port number as 9002.
+• Set IP address as INADDR_ANY.  
+STEP 5: Bind the socket using bind().
+STEP 6: Receive the string from the client using recvfrom().
+STEP 7: Initialize left = 0 and right = length - 1.
+STEP 8: Compare the characters from both ends of the string.
+STEP 9: If any pair of characters is different, mark the string as not a palindrome.
+STEP 10: If all corresponding characters are equal, mark the string as a palindrome.
+STEP 11: Send the result to the client using sendto().
+STEP 12: Close the socket using close().
+STEP 13: Stop the program.
+ALGORITHM (CLIENT PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming and string manipulation.
+STEP 3: Create a UDP socket using socket(AF_INET, SOCK_DGRAM, 0).
+STEP 4: Define the server address structure.
+• Set address family as AF_INET.
+• Set port number as 9002.
+• Set server IP address as 127.0.0.1.  
+STEP 5: Read a string from the user using fgets().
+STEP 6: Send the string to the server using sendto().
+STEP 7: Receive the palindrome result using recvfrom().
+STEP 8: Display whether the string is a palindrome or not.
+STEP 9: Close the socket using close().
+STEP 10: Stop the program.
+6. REVERSE A STRING
+ALGORITHM (SERVER PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming and string manipulation.
+STEP 3: Create a UDP socket using socket(AF_INET, SOCK_DGRAM, 0).
+STEP 4: Define the server address structure.
+• Set address family as AF_INET.
+• Set port number as 9002.
+• Set IP address as INADDR_ANY.  
+STEP 5: Bind the socket using bind().
+STEP 6: Receive the string from the client using recvfrom().
+STEP 7: Find the length of the received string.
+STEP 8: Traverse the string from the last character to the first character.
+STEP 9: Store the characters in reverse order in another string.
+STEP 10: Add the null character '\0' at the end of the reversed string.
+STEP 11: Send the reversed string to the client using sendto().
+STEP 12: Close the socket using close().
+STEP 13: Stop the program.
+ALGORITHM (CLIENT PROGRAM)
+STEP 1: Start the program.
+STEP 2: Include the required header files for socket programming and string manipulation.
+STEP 3: Create a UDP socket using socket(AF_INET, SOCK_DGRAM, 0).
+STEP 4: Define the server address structure.
+• Set address family as AF_INET.
+• Set port number as 9002.
+• Set server IP address as 127.0.0.1.  
+STEP 5: Read a string from the user using fgets().
+STEP 6: Send the string to the server using sendto().
+STEP 7: Receive the reversed string using recvfrom().
+STEP 8: Display the reversed string on the screen.
+STEP 9: Close the socket using close().
+STEP 10: Stop the program.
